@@ -1,5 +1,6 @@
 <html>
 <head>
+	<meta charset="UTF-8">
     <title>CG ETL Dashboard</title>
     <link rel="stylesheet" type="text/css" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.1/css/bootstrap.min.css">
 </head>
@@ -12,19 +13,21 @@
         <div class="col-md-12 form-inline" role="form">
             <div class="form-group">
                 <select class="form-control" id="select-industry">
-                    <option>Beer</option>
-                    <option>Baby Formula</option>
+
+					{% for industry in industries %}
+                    <option>{{industry}}</option>
+					{% endfor %}
+
                 </select>
             </div>
             <div class="form-group">
                 <select class="form-control" id="select-brands">
-                    <option>青岛</option>
-                    <option>瓦伦丁</option>
+                    <!-- <option>{{br}}</option> -->
                 </select>
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" id='products'>
         <div class="col-md-12">
             <table class="table table-bordered">
                 <thead>
@@ -69,8 +72,23 @@ $(function() {
                 'html': $('.input-tag').val()
             }).appendTo(options);
         }
-    })
+    });
+
+	$('#select-industry').change(function(){
+		$.get('industry', { industry: $(this).val()}, function(result){
+			$('#select-brands').html(result);
+		});
+	});
+
+	$('#select-brands').change(function(){
+		$.get('brand', {brand: $(this).val()}, function(result){
+			$('#products').html(result);
+			console.log('product');
+		});
+	});
+
 })
+
 </script>
 </body>
 </html>

@@ -1,0 +1,32 @@
+<div class="col-md-12">
+	<table class="table table-bordered">
+		<thead>
+			<th>#</th>
+			<th>CategoryName</th>
+			<th>Volume</th>
+			<th>Alcholocity</th>
+			<th>Title</th>
+			<th width="20%">Tag</th>
+		</thead>
+		<tbody>
+			{% for p in products %}
+			<tr>
+				<td>{{p['number']}}</td>
+				<td>{{p['category']}}</td>
+				<td>{{p['volume']}}</td>
+				<td>{{p['alcoholicity']}}</td>
+				<td>{{p['product_name']}}</td>
+				<td>
+					<div class="input-group">
+						<span class="input-group-addon">
+							<select>
+							</select>
+						</span>
+						<input type="text" class="form-control col-xs-2 input-tag">
+					</div>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
