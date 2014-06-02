@@ -40,7 +40,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -48,8 +48,7 @@
                         <td>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <select>
-                                    </select>
+                                    <select></select>
                                 </span>
                                 <input type="text" class="form-control col-xs-2 input-tag">
                             </div>
@@ -65,25 +64,26 @@
 <script type="text/javascript" src="http://cdn.staticfile.org/bootbox.js/4.2.0/bootbox.min.js"></script>
 <script type="text/javascript">
 $(function() {
-    $('.input-tag').keyup(function(e) {
+    function input_select (e) {
         if(e.keyCode == 13) {
             var options = $(this).parent().find('select');
             $('<option/>', {
                 'html': $('.input-tag').val()
             }).appendTo(options);
         }
-    });
+    };
 
 	$('#select-industry').change(function(){
 		$.get('industry', { industry: $(this).val()}, function(result){
 			$('#select-brands').html(result);
+			$('.input-tag').bind('keyup', input_select);
 		});
 	});
 
 	$('#select-brands').change(function(){
 		$.get('brand', {brand: $(this).val()}, function(result){
 			$('#products').html(result);
-			console.log('product');
+			$('.input-tag').bind('keyup', input_select);
 		});
 	});
 
