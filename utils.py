@@ -17,4 +17,4 @@ def dget(dictionary, cmd, default=None):
         
 if __name__ == "__main__":
     data = {'a':{'b':{'c':1}}}
-    print dget(data, 'a.b.c')
+    print(dget(data, 'a.b.c'))

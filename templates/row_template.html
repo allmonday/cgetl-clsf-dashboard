@@ -1,21 +1,17 @@
 <div class="col-md-12">
-	<table class="table table-bordered">
+    <table class="table table-bordered">
 		<thead>
-			<th>#</th>
-			<th>CategoryName</th>
-			<th>Volume</th>
-			<th>Alcholocity</th>
-			<th>Title</th>
+            {% for t in titles %}
+            <th>{{t}}</th>
+            {% endfor %}
 			<th width="20%">Tag</th>
 		</thead>
 		<tbody>
 			{% for p in products %}
 			<tr>
-				<td>{{p['_id']}}</td>
-				<td>{{p['category']}}</td>
-				<td>{{p['volume']}}</td>
-				<td>{{p['alcoholicity']}}</td>
-				<td>{{p['product_name']}}</td>
+                {% for pp in p %}
+				<td>{{pp}}</td>
+                {% endfor %}
 				<td>
 					<div class="input-group">
 						<span class="input-group-addon">
