@@ -1,5 +1,5 @@
 <div class="col-md-12">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped">
 		<thead>
             {% for t in titles %}
             <th>{{t}}</th>
@@ -7,6 +7,7 @@
 			<th width="20%">Tag</th>
 		</thead>
 		<tbody>
+
 			{% for p in products %}
 			<tr>
                 {% for pp in p %}
@@ -23,6 +24,7 @@
 				</td>
 			</tr>
 			{% endfor %}
+
 		</tbody>
 	</table>
 </div>

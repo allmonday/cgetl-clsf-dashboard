@@ -25,11 +25,14 @@
                     <!-- <option>{{br}}</option> -->
                 </select>
             </div>
+			<div class="form-group">
+				<button type="button" class="btn" id="i-want-submit">submit</button>
+			</div>
         </div>
     </div>
     <div class="row" id='products'>
         <div class="col-md-12">
-            <table class="table table-bordered">
+            <table class="table table-bordered table-striped">
                 <thead>
                     <th>#</th>
                     <th>CategoryName</th>
@@ -84,6 +87,12 @@ $(function() {
 		$.get('brand', {brand: $(this).val()}, function(result){
 			$('#products').html(result);
 			$('.input-tag').bind('keyup', input_select);
+		});
+	});
+
+	$('#i-want-submit').click(function(){
+		$.get("submit", {submit: 'hello'}, function(result){
+			console.log('success');
 		});
 	});
 
